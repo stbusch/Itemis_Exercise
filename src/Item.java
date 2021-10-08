@@ -1,5 +1,7 @@
 public class Item {
-    private float price;
+    private double netPrice=0;
+    private double grossPrice=0;
+    private double tax=0;
   /*  private enum Category
     {
         book, musicCD,chocolateBar, boxOfChocolates,
@@ -9,18 +11,26 @@ public class Item {
     private String name;
     private boolean imported;
 
-    public Item (float pr, String name, boolean imp)
+    public Item (double npr,String name, boolean imp)
     {
-        this.price = pr;
+        this.netPrice = npr;
         this.name= name;
         this.imported = imp;
     }
 
-//setter
-public float getPrice()
+//getter
+public double getNetPrice()
  {
-     return this.price;
+     return this.netPrice;
  }
+ public double getGrossPrice()
+ {
+     return this.grossPrice;
+ }
+public double getTax()
+{
+    return this.tax;
+}
  public String getName()
  {
      return this.name;
@@ -31,5 +41,37 @@ public float getPrice()
  {
  return this.imported;
  }
+ //calculates item's sales tax
+ public void calcTax ()
+{
+   double basicTax= 0;
+   double importTax= 0;
+   if (!((this.getName().equals("book"))|
+           (this.getName().contains("chocolate")) |
+           (this.getName().contains("pills"))
+   ))
+   {
+    basicTax = this.netPrice * 0.1;
+   }
+   if (this.isImported())
+   {
+       importTax= this.netPrice*0.05;
+   }
+   tax=round(basicTax+importTax);
 
+}
+
+//implements the desired rounding to nearest 0.05
+//(taken from https://stackoverflow.com/questions/9256005/java-rounding-to-nearest-0-05)
+private double round (double unrounded)
+{
+double rounded = Math.round(unrounded * 20.0) / 20.0;
+return rounded;
+}
+
+public void setGrossPrice()
+{
+    calcTax();
+    grossPrice=netPrice+tax;
+}
 }
