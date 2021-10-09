@@ -57,15 +57,15 @@ public double getTax()
    {
        importTax= this.netPrice*0.05;
    }
-   tax=round(basicTax+importTax);
+   tax=roundTax(basicTax+importTax);
 
 }
 
 //implements the desired rounding to nearest 0.05
 //(taken from https://stackoverflow.com/questions/9256005/java-rounding-to-nearest-0-05)
-private double round (double unrounded)
+private double roundTax (double unrounded)
 {
-double rounded = Math.round(unrounded * 20.0) / 20.0;
+double rounded = Math.ceil(unrounded * 20.0) / 20.0;
 return rounded;
 }
 
