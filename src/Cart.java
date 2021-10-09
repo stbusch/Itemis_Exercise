@@ -36,10 +36,10 @@ public class Cart {
 
     public void printReceipt() {
         for (Item item : items) {
-            System.out.println("1 " + item.getName() + ": "+String.format(Locale.ENGLISH,"%.2f", item.getGrossPrice()));
+            System.out.println("1 " + item.getName() + ": " + String.format(Locale.ENGLISH, "%.2f", item.getGrossPrice()));
         }
-        System.out.println("Sales Taxes: " +String.format(Locale.ENGLISH,"%.2f", this.totalTax));
-        System.out.println("Total: " +String.format(Locale.ENGLISH,"%.2f", this.totalSum));
+        System.out.println("Sales Taxes: " + String.format(Locale.ENGLISH, "%.2f", this.totalTax));
+        System.out.println("Total: " + String.format(Locale.ENGLISH, "%.2f", this.totalSum));
 
     }
 
