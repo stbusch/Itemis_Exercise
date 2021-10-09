@@ -10,7 +10,7 @@ public void addItem(Item item)
 {
   items.add(item);
 }
-public void setTotals()
+public void calcTotals()
 {
 for (Item item:items){
     item.setGrossPrice();
